@@ -4,7 +4,8 @@ import localFont from "next/font/local";
 import { MdMovie } from "react-icons/md";
 import styles from "@/styles/Home.module.css";
 import Navbar from "@/components/navbar/navbar";
-import HomeSlider from "@/components/homeSlider/homeSlider"
+import HomeSlider from "@/components/homeSlider/homeSlider";
+import MovieCarousel from "@/components/movieCarousel/movieCarousel";
 export default function Home() {
   return (
     <>
@@ -18,6 +19,7 @@ export default function Home() {
         <main className={styles.main}>
           <Navbar/>
           <HomeSlider/>
+          <MovieCarousel/>
         </main>
         <footer className={styles.footer}>
           
