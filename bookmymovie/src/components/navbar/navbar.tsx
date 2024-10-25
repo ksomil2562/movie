@@ -30,7 +30,7 @@ function Navbar() {
             <BiUserCircle />
           </span>
         </Link>
-        <Link href="/" className={`${styles.theme_btn1} ${styles.linkstylenone}`}>Logout</Link>
+        <Link href="/" className={`${styles.theme_btn1}`}>Logout</Link>
       </div>
     </div>
   );

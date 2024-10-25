@@ -3,7 +3,8 @@ import Image from "next/image";
 import localFont from "next/font/local";
 import { MdMovie } from "react-icons/md";
 import styles from "@/styles/Home.module.css";
-import Navbar from "@/components/navbar/navbar"
+import Navbar from "@/components/navbar/navbar";
+import HomeSlider from "@/components/homeSlider/homeSlider"
 export default function Home() {
   return (
     <>
@@ -16,6 +17,7 @@ export default function Home() {
       <div>
         <main className={styles.main}>
           <Navbar/>
+          <HomeSlider/>
         </main>
         <footer className={styles.footer}>
           
