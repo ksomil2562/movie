@@ -10,3 +10,9 @@ export interface MovieCardType {
     // crew: CelebrityCardType[];
 
 }
+export interface CelebrityCardType{
+    name: string;
+    imageUrl: string;
+    _id: string;
+    role: string;
+}
