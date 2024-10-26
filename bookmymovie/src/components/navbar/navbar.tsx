@@ -13,7 +13,9 @@ function Navbar() {
   return (
     <div className={styles.nav}>
       <div className={styles.left}>
+        <Link href = '/'>
         <Image src="/logo-bg.png" alt="logo" width={140} height={100} className={styles.nav_img} />
+        </Link>
         <div className={styles.searchboxcontainer}>
           <BiSearch className={styles.searchbtn} />
           <input

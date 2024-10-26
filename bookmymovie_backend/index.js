@@ -4,6 +4,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const PORT = 8000;
+
+const authRoutes = require('./routes/Auth');
+
 require('dotenv').config();
 require('./db')
 const cookieParser = require('cookie-parser');
@@ -25,6 +28,7 @@ app.get('/', (req, res) => {
     res.json({ message: 'The API is working' });
 });
 app.use(cookieParser());
+app.use('/auth', authRoutes);
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
