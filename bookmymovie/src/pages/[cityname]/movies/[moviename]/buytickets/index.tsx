@@ -9,28 +9,12 @@ import dynamic from 'next/dynamic';
 // Import the DatePicker dynamically for client-side rendering
 const DatePicker = dynamic(() => import('react-horizontal-datepicker'), { ssr: false });
 
-// Define interfaces for types
-interface Screen {
-    _id: string;
-    name: string;
-    location: string;
-}
 
-interface Movie {
-    moviename: string;
-    screen: string;
-    date: Date;
-    language: string;
-    type: string;
-    screens: Screen[];
-}
-
-// Component definition
 const Index: React.FC = () => {
     const pathname = usePathname();
 
     // Define the movie object with type
-    const movie: Movie = {
+    const movie = {
         moviename: 'Venom: Last Dance',
         screen: '4Dx',
         date: new Date(),
