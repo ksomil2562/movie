@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link';
 import { useParams, usePathname, useSearchParams } from 'next/navigation';
 import { toast } from 'react-toastify';
@@ -41,6 +41,7 @@ const SelectSeatPage = () => {
                 seats: [
                     {
                         type: 'platinum',
+                        price: 500,
                         rows: [
                             {
                                 rowname: 'H',
@@ -50,7 +51,7 @@ const SelectSeatPage = () => {
                                             {
                                                 type: 'seat',
                                                 id: 1,
-                                                status: 'available',
+                                                status: 'unavailable',
                                             },
                                             {
                                                 type: 'seat',
@@ -65,7 +66,7 @@ const SelectSeatPage = () => {
                                             {
                                                 type: 'seat',
                                                 id: 4,
-                                                status: 'available',
+                                                status: 'unavailable',
                                             }
                                         ]
                                     },
@@ -79,7 +80,7 @@ const SelectSeatPage = () => {
                                             {
                                                 type: 'seat',
                                                 id: 6,
-                                                status: 'available',
+                                                status: 'unavailable',
                                             },
                                             {
                                                 type: 'seat',
@@ -92,12 +93,13 @@ const SelectSeatPage = () => {
                                                 status: 'available',
                                             }
                                         ]
-                                    }
+                                    },
+
 
                                 ]
                             },
                             {
-                                rowname: 'I',
+                                rowname: 'G',
                                 cols: [
                                     {
                                         seats: [
@@ -119,7 +121,7 @@ const SelectSeatPage = () => {
                                             {
                                                 type: 'seat',
                                                 id: 12,
-                                                status: 'available',
+                                                status: 'unavailable',
                                             }
                                         ]
                                     },
@@ -138,11 +140,126 @@ const SelectSeatPage = () => {
                                             {
                                                 type: 'seat',
                                                 id: 15,
-                                                status: 'available',
+                                                status: 'unavailable',
                                             },
                                             {
                                                 type: 'seat',
                                                 id: 16,
+                                                status: 'available',
+                                            }
+                                        ]
+                                    }
+
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        type: 'Gold',
+                        price: 400,
+                        rows: [
+                            {
+                                rowname: 'F',
+                                cols: [
+                                    {
+                                        seats: [
+                                            {
+                                                type: 'seat',
+                                                id: 17,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 18,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 19,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 20,
+                                                status: 'available',
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        seats: [
+                                            {
+                                                type: 'seat',
+                                                id: 21,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 22,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 23,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 24,
+                                                status: 'available',
+                                            }
+                                        ]
+                                    },
+
+
+                                ]
+                            },
+                            {
+                                rowname: 'E',
+                                cols: [
+                                    {
+                                        seats: [
+                                            {
+                                                type: 'seat',
+                                                id: 25,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 26,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 27,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 28,
+                                                status: 'available',
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        seats: [
+                                            {
+                                                type: 'seat',
+                                                id: 29,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 30,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 31,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 32,
                                                 status: 'available',
                                             }
                                         ]
@@ -159,6 +276,7 @@ const SelectSeatPage = () => {
                 seats: [
                     {
                         type: 'platinum',
+                        price: 500,
                         rows: [
                             {
                                 rowname: 'H',
@@ -215,7 +333,7 @@ const SelectSeatPage = () => {
                                 ]
                             },
                             {
-                                rowname: 'I',
+                                rowname: 'G',
                                 cols: [
                                     {
                                         seats: [
@@ -269,20 +387,221 @@ const SelectSeatPage = () => {
                                 ]
                             }
                         ]
+                    },
+                    {
+                        type: 'Gold',
+                        price: 400,
+                        rows: [
+                            {
+                                rowname: 'F',
+                                cols: [
+                                    {
+                                        seats: [
+                                            {
+                                                type: 'seat',
+                                                id: 17,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 18,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 19,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 20,
+                                                status: 'available',
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        seats: [
+                                            {
+                                                type: 'seat',
+                                                id: 21,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 22,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 23,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 24,
+                                                status: 'available',
+                                            }
+                                        ]
+                                    }
+
+                                ]
+                            },
+                            {
+                                rowname: 'E',
+                                cols: [
+                                    {
+                                        seats: [
+                                            {
+                                                type: 'seat',
+                                                id: 25,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 26,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 27,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 28,
+                                                status: 'available',
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        seats: [
+                                            {
+                                                type: 'seat',
+                                                id: 29,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 30,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 31,
+                                                status: 'available',
+                                            },
+                                            {
+                                                type: 'seat',
+                                                id: 32,
+                                                status: 'available',
+                                            }
+                                        ]
+                                    }
+
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
         ]
     }
-    const generateSeatlayout = () => {
-        return (
-            <>
-
-            </>
-        )
-    }
     const [selectedSeats, setSelectedSeats] = React.useState<any[]>([]);
-    const [selectedTime, setSelectedTime] = React.useState<any>(null)
+    const selectdeselectseat = (seat: any) => {
+        console.log(seat)
+        // {
+        //     "row": "F",
+        //     "col": 1,
+        //     "seat_id": "6",
+        //     "price": 500
+        // }
+        const isselected = selectedSeats.find((s: any) => (
+            s.row === seat.row &&
+            s.col === seat.col &&
+            s.seat_id === seat.seat_id
+        ))
+
+        if (isselected) {
+            setSelectedSeats(selectedSeats.filter((s: any) => (
+                s.row !== seat.row ||
+                s.col !== seat.col ||
+                s.seat_id !== seat.seat_id
+            )))
+        }
+
+        else {
+            setSelectedSeats([...selectedSeats, seat])
+        }
+    }
+    const [selectedTime, setSelectedTime] = React.useState<any>(null);
+    useEffect(() => {
+        if (!selectedTime && screen.timeslots.length > 0) {
+            setSelectedTime(screen.timeslots[0]);
+        }
+    }, [selectedTime, screen.timeslots]);
+    const generateSeatlayout = () => {
+        if (!selectedTime) {
+            return <div>Please select a time slot to view available seats.</div>;
+        }
+
+        const timeSlotIndex = screen.timeslots.findIndex(
+            (t: any) => t.time === selectedTime.time
+        );
+        if (timeSlotIndex === -1) {
+            return <div>No seats available for the selected time slot.</div>;
+        }
+        return screen.timeslots[timeSlotIndex].seats.map((seatType, index) => (
+            <div className={styles.seat_type} key={index}>
+                <h2>
+                    {seatType.type} - Rs {seatType.price}
+                </h2>
+                <div className={styles.seat_rows}>
+                    {
+                        seatType.rows.map((row, rowIndex) => (
+                            <div className={styles.seat_row} key={rowIndex}>
+                                <p className={styles.rowname}>{row.rowname}</p>
+                                <div className={styles.seat_cols}>
+                                    {
+                                        row.cols.map((col, colIndex) => (
+                                            <div className={styles.seat_col} key={colIndex}>
+                                                {col.seats.map((seat, seatIndex) => (
+                                                    <div key={seatIndex}>
+                                                        {seat.status === 'available' &&
+                                                            <span className={
+                                                                selectedSeats.find((s: any) => (
+                                                                    s.row === row.rowname &&
+                                                                    s.seat_id === seat.id &&
+                                                                    s.col === colIndex
+                                                                )) ? styles.seat_selected : styles.seat_available
+                                                            }
+                                                            onClick={() => selectdeselectseat({
+                                                                row: row.rowname,
+                                                                col: colIndex,
+                                                                seat_id: seat.id,
+                                                                price: seatType.price
+                                                            })}
+                                                        >
+                                                            {seatIndex+1}
+                                                        </span>
+                                                        }
+                                                        {seat.status === 'unavailable' &&
+                                                            <span className={styles.seat_unavailable}>
+                                                                {seatIndex+1}
+                                                            </span>
+                                                        }
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ))}
+                                </div>
+                                <br /> <br /> <br />
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        ));
+    };
     return (
         <div className={styles.selectseatpage}>
             <div className={styles.s1}>

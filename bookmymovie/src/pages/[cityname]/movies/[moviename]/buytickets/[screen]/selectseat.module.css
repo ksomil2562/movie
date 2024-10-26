@@ -195,7 +195,7 @@
 .seat_available:hover {
     cursor: pointer;
     background-color: var(--col1);
-    color: green;
+    color: white;
 }
 
 .seat_unavailable:hover {

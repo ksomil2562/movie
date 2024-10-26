@@ -5,8 +5,11 @@ import styles from './navbar.module.css';
 import { BiUserCircle, BiSearch } from 'react-icons/bi';
 import { RiArrowDropDownFill } from 'react-icons/ri';
 import Image from 'next/image';
-
+import LocationPopup from '../../popups/location/locationPopup'
 function Navbar() {
+    const [showLocationPopup, setShowLocationPopup] = React.useState<boolean>(false)
+    const [user, setUser] = React.useState<any>(null)
+    const [loggedIn, setLoggedIn] = React.useState<boolean>(false)
   return (
     <div className={styles.nav}>
       <div className={styles.left}>
@@ -21,8 +24,8 @@ function Navbar() {
         </div>
       </div>
       <div className={styles.right}>
-        <p className={styles.dropdown}>
-          Mumbai
+        <p className={styles.dropdown} onClick={() => setShowLocationPopup(true)}>
+        {user ? user.city : "Select City"}
           <RiArrowDropDownFill className={styles.dropicon} />
         </p>
         <Link href="/" className={styles.linkstylenone}>
@@ -32,6 +35,12 @@ function Navbar() {
         </Link>
         <Link href="/" className={`${styles.theme_btn1}`}>Logout</Link>
       </div>
+      {
+                showLocationPopup &&
+                <LocationPopup
+                    setShowLocationPopup={setShowLocationPopup}
+                />
+            }
     </div>
   );
 }
