@@ -11,7 +11,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo_bg1.png" />
       </Head>
-      
+      <main>
+        <Navbar/>
+      </main>
   <Component {...pageProps} />
   </>
 );

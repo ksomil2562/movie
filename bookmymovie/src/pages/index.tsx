@@ -11,7 +11,6 @@ export default function Home() {
     <>
       <div>
         <main className={styles.main}>
-          <Navbar/>
           <HomeSlider/>
           <MovieCarousel/>
         </main>

@@ -5,7 +5,7 @@ import { BsFillStarFill } from 'react-icons/bs';
 import styles from "./movieCard.module.css";
 const MovieCard = (data: MovieCardType) => {
     const router = useRouter();
-    const city = "mumbai"
+    const city = "mumbai";
     const { title, portraitImgUrl, _id, rating, type } = data;
 
     return (

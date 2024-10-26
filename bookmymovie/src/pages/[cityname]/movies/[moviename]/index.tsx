@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '@/components/navbar/navbar';
 import 'swiper/css';
+import { useRouter } from 'next/navigation';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
@@ -11,6 +12,7 @@ import styles from "./moviePage.module.css";
 import { BsFillStarFill, BsShare } from 'react-icons/bs';
 import MovieCarousel from '@/components/movieCarousel/movieCarousel';
 const moviePage = () => {
+    
     const movie = {
         "_id": "65101a2acc5b257e6f2816a5",
         "title": "Venom:Last Dance",
@@ -71,9 +73,11 @@ const moviePage = () => {
         ],
         "__v": 0
     }
+    const router = useRouter();
+    const pathname = usePathname()
+    const city = "mumbai";
     return (
         <>
-            <Navbar />
             <div className={styles.moviepage}>
                 <div className={styles.c1} style={{ backgroundImage: `url(${movie.landscapeImgUrl})` }}>
                     <div className={styles.c11}>
@@ -103,7 +107,7 @@ const moviePage = () => {
                                     </span>
                                 </p>
                                 <Link
-                                    href="#"
+                                    href={`${pathname}/buytickets`}
                                     className='linkstylenone'
                                 >
                                     <button className={styles.bookbtn}>Book Tickets</button>
