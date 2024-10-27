@@ -6,7 +6,9 @@ const cors = require('cors');
 const PORT = 8000;
 
 const authRoutes = require('./routes/Auth');
-
+const adminRoutes = require('./routes/Admin');
+const movieRoutes = require('./routes/Movie');
+const imageuploadRoutes = require('./routes/imageUploadRoutes');
 require('dotenv').config();
 require('./db')
 const cookieParser = require('cookie-parser');
@@ -29,6 +31,8 @@ app.get('/', (req, res) => {
 });
 app.use(cookieParser());
 app.use('/auth', authRoutes);
+app.use('/admin', adminRoutes);
+app.use('/movie', movieRoutes);
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

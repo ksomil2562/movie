@@ -26,8 +26,8 @@ function checkAuthToken(req, res, next) {
                 }
 
                 else {
-                    const newAuthToken = jwt.sign({ userId: refreshDecoded.userId }, process.env.JWT_SECRET_KEY, { expiresIn: '10m' });
-                    const newRefreshToken = jwt.sign({ userId: refreshDecoded.userId }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '30m' });
+                    const newAuthToken = jwt.sign({ userId: refreshDecoded.userId }, process.env.JWT_SECRET_KEY, { expiresIn: '60m' });
+                    const newRefreshToken = jwt.sign({ userId: refreshDecoded.userId }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '1d' });
 
                     res.cookie('authToken', newAuthToken, { httpOnly: true, secure: true, sameSite: 'None' });
                     res.cookie('refreshToken', newRefreshToken, { httpOnly: true, secure: true, sameSite: 'None' });
