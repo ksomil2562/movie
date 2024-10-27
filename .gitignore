@@ -2,3 +2,4 @@
 /bookmymovie/node_modules/
 ./bookmymovie_backend/node_modules/
 ./bookmymovie_backend/.env
+/bookmymovie_admin/node_modules
