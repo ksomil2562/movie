@@ -18,3 +18,9 @@ export interface Movie {
     cast: Person[];
     crew: Person[];
 }
+
+export interface Screen {
+    _id: string;
+    name: string;
+    location: string;
+}
