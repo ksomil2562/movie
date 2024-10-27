@@ -13,7 +13,7 @@ require('dotenv').config();
 require('./db')
 const cookieParser = require('cookie-parser');
 app.use(bodyParser.json());
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
 app.use(
     cors({
         origin: function (origin, callback) {
@@ -33,6 +33,7 @@ app.use(cookieParser());
 app.use('/auth', authRoutes);
 app.use('/admin', adminRoutes);
 app.use('/movie', movieRoutes);
+app.use('/image', imageuploadRoutes);
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
