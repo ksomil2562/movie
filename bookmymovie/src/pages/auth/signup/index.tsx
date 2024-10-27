@@ -54,6 +54,48 @@ export default function Signup() {
             setErrors(validationErrors);
             return;
         }
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+        .then((res) => {
+            return res.json();
+        })
+        .then((response) => {
+            if (response.ok) {
+                toast(response.message, {
+                    type: 'success',
+                    position: 'top-right',
+                    autoClose: 2000
+                })
+                window.location.href = '/auth/signin'
+                setFormData(
+                    {
+                        name: '',
+                        email: '',
+                        password: '',
+                        confirmPassword: '',
+                        city: ''
+                    }
+                )
+            } else {
+                toast(response.message, {
+                    type: 'error',
+                    position: 'top-right',
+                    autoClose: 2000
+                });
+            }
+        })
+        .catch((error) => {
+            toast(error.message, {
+                type: 'error',
+                position: 'top-right',
+                autoClose: 2000
+            });
+        })
     }
     return (
         <div className={authStyles.authout}>

@@ -58,8 +58,33 @@ const LocationPopup = (
     }, [])
 
     const handleSave = () => {
-        setShowLocationPopup(false)
-       
+        // setShowLocationPopup(false)
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/changeCity`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                city: selectedCity
+            })
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.ok) {
+                    // toast(data.message, {
+                    //     type: 'success'
+                    // })
+                    setShowLocationPopup(false)
+                    window.location.reload()
+                }
+            })
+            .catch((err) => {
+                toast(err.message, {
+                    type: 'error'
+                })
+                console.log(err)
+            })
     }
 
     return (

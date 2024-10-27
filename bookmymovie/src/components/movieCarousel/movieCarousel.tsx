@@ -3,74 +3,63 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
-// import MovieCard from './MovieCard';
-
-
 import { MovieCardType } from '@/types/types';
 import MovieCard from './movieCard';
 
 
 const MovieCarousel = () => {
-    const Movies: MovieCardType[] = [
-        {
-            title: "Venom:Last Dance",
-            portraitImgUrl: "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-image,i-discovery-catalog@@icons@@star-icon-202203010609.png,lx-24,ly-615,w-29,l-end:l-text,ie-OC4yLzEwICAxOS4zSyBWb3Rlcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-70,pa-8_0_0_0,l-end/et00383474-rdwhyyeehq-portrait.jpg",
-            _id: "1",
-            rating: 8.5,
-            type: "Action"
+    const [user, setUser] = React.useState<any>(null)
+    const getuser = async () => {
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/getuser`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include'
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then((response) => {
+                console.log(response)
+                if(response.ok){
+                    setUser(response.data)
+                }
+                else{
+                    window.location.href = "/auth/signin"
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            })
 
-        },
-        {
-            title: "Stree 2",
-            portraitImgUrl: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/stree-2-et00364249-1721725490.jpg",
-            _id: "1",
-            rating: 8.5,
-            type: "Horror/Comedy"
+    }
+    const [movies, setMovies] = React.useState<MovieCardType[]>([])
 
-        },
-        {
-            title: "Stree 2",
-            portraitImgUrl: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/stree-2-et00364249-1721725490.jpg",
-            _id: "1",
-            rating: 8.5,
-            type: "Horror/Comedy"
+    const getMovies = async () => {
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/movie/movies`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include'
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if(data.ok){
+                    console.log(data)
+                    setMovies(data.data)
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
 
-        },
-        {
-            title: "Stree 2",
-            portraitImgUrl: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/stree-2-et00364249-1721725490.jpg",
-            _id: "1",
-            rating: 8.5,
-            type: "Horror/Comedy"
-
-        },
-        {
-            title: "Stree 2",
-            portraitImgUrl: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/stree-2-et00364249-1721725490.jpg",
-            _id: "1",
-            rating: 8.5,
-            type: "Horror/Comedy"
-
-        },
-        {
-            title: "Stree 2",
-            portraitImgUrl: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/stree-2-et00364249-1721725490.jpg",
-            _id: "1",
-            rating: 8.5,
-            type: "Horror/Comedy"
-
-        },
-        {
-            title: "Stree 2",
-            portraitImgUrl: "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/stree-2-et00364249-1721725490.jpg",
-            _id: "1",
-            rating: 8.5,
-            type: "Horror/Comedy"
-
-        }
-
-    ];
-
+    React.useEffect(() => {
+        getMovies()
+        getuser()
+    }, [])
     return (
         <div className='sliderout'>
             {
@@ -103,14 +92,17 @@ const MovieCarousel = () => {
                     className="mySwiper"
                 >
                     {
-                        Movies.map((Movie) => {
-                            return (
-                                <SwiperSlide>
-                                    <MovieCard {...Movie} />
-                                </SwiperSlide>
-                            )
-                        })
-                    }
+                    movies.map((Movie) => {
+                        return (
+                            <SwiperSlide key={Movie._id}>
+                                <MovieCard 
+                                    Movie={Movie}
+                                    user={user}
+                                />
+                            </SwiperSlide>
+                        )
+                    })
+                }
                 </Swiper>
             }
         </div>
