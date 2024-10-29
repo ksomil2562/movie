@@ -1,0 +1,8 @@
+/bookmymovie/next.env.d.ts
+/bookmymovie/node_modules/
+./bookmymovie_backend/node_modules/
+./bookmymovie_backend/.env
+/bookmymovie_admin/node_modules
+/bookmymovie/.env.local
+.DS_Store
+
